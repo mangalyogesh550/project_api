@@ -32,8 +32,8 @@ public class ProjectApiApplication {
 			TypeReference<List<CountyEntity>> typeReference = new TypeReference<List<CountyEntity>>(){};
 			InputStream inputStream = TypeReference.class.getResourceAsStream("/project.json");
 			try {
-				List<CountyEntity> countyDetail = mapper.readValue(inputStream,typeReference);
-				countyServiceImpl.addCountyList(countyDetail);
+				List<CountyEntity> countyDetails = mapper.readValue(inputStream,typeReference);
+				countyServiceImpl.addCountyList(countyDetails);
 				System.out.println("All County  List Saved!");
 			} catch (IOException e){
 				System.out.println("Unable to save list: " + e.getMessage());

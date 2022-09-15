@@ -17,7 +17,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "county_entity_detail")
+//@Table(name = "county_entity_detail")
 public class CountyEntity implements Serializable {
 
 	/**
@@ -27,16 +27,16 @@ public class CountyEntity implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
+//	@Column(name = "id")
 	private long id;
 
-	@Column(name = "fips_no")
+//	@Column(name = "fips_no")
 	private String fips;
 
-	@Column(name = "state_name")
+//	@Column(name = "state_name")
 	private String state;
 
-	@Column(name = "county_name")
+//	@Column(name = "county_name")
 	private String name;
 
 }

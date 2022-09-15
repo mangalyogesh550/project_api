@@ -4,7 +4,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
-public class TestException extends RuntimeException {
+public class ProjectApiException extends RuntimeException {
 
 	/**
 	 * 
@@ -14,7 +14,7 @@ public class TestException extends RuntimeException {
 	private String resourceName;
 	private Object fieldValue;
 
-	public TestException(String resourceName, Object fieldValue) {
+	public ProjectApiException(String resourceName, Object fieldValue) {
 		super(String.format("%s not found with %s : '%s'", resourceName, fieldValue));
 		this.resourceName = resourceName;
 		this.fieldValue = fieldValue;

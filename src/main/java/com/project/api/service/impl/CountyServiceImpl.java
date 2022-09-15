@@ -3,11 +3,13 @@ package com.project.api.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.project.api.entity.CountyEntity;
 import com.project.api.repository.CountyRepo;
 import com.project.api.service1.CountyService;
 
+@Service
 public class CountyServiceImpl implements CountyService {
 
 	@Autowired

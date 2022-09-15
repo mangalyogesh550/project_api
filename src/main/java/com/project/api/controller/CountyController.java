@@ -23,9 +23,14 @@ public class CountyController {
 	@Autowired
 	CountyService countyService;
 
-	@PostMapping(value = "/details")
+	@PostMapping(value = "/detail")
 	public ResponseEntity<CountyEntity> add(@RequestBody CountyEntity countyEntity) throws IOException {
 		return new ResponseEntity<CountyEntity>(countyService.addCounty(countyEntity), HttpStatus.CREATED);
+	}
+	
+	@PostMapping(value = "/details")
+	public ResponseEntity<List<CountyEntity>> add(@RequestBody List<CountyEntity> countyEntity) throws IOException {
+		return new ResponseEntity<List<CountyEntity>>(countyService.addCountyList(countyEntity), HttpStatus.CREATED);
 	}
 
 	@GetMapping(value = "/details")
