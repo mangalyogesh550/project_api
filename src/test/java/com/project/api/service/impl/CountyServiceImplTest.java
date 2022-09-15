@@ -8,6 +8,7 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentMatchers;
@@ -39,6 +40,17 @@ public class CountyServiceImplTest {
 		assertThat(county.getName()).isSameAs(countyEntity.getName());
 		verify(countyRepo).save(countyEntity);
 	}
+	
+//	@Test
+//	void addCountyListTest() {
+//		List<CountyEntity> counties2 = new ArrayList();
+//		CountyEntity countyEntity = new CountyEntity();
+//		countyEntity.setName("Test Name");
+//		when(countyRepo.saveAll().thenReturn(counties2);
+//		List<CountyEntity> counties = countyServiceImpl.addCountyList(counties2);
+//		assertThat(county.getName()).isSameAs(countyEntity.getName());
+//		verify(countyRepo).save(countyEntity);
+//	}
 
 	// method1
 	@Test
@@ -50,6 +62,19 @@ public class CountyServiceImplTest {
 		assertEquals(expected, counties);
 		verify(countyRepo).findAll();
 	}
+	
+	//method2
+		@Test
+		void getAllCountyTest2() {
+			List<CountyEntity> counties3 = new ArrayList<>();
+			CountyEntity county = new CountyEntity();
+			county.setName("test");
+			counties3.add(county);
+			
+			when(countyRepo.findAll()).thenReturn(counties3);
+			List<CountyEntity> cList = countyServiceImpl.getAllCounty();
+			Assertions.assertEquals("test", cList.get(0).getName());
+		}
 
 	@Test
 	public void getByNameTest() {
@@ -63,12 +88,13 @@ public class CountyServiceImplTest {
 
 	@Test
 	public void getByStateTest() {
+		List<CountyEntity> counties1 = new ArrayList();
 		CountyEntity county = new CountyEntity();
 		county.setState("test");
-		when(countyRepo.findByState(county.getState())).thenReturn((List<CountyEntity>) county);
+		when(countyRepo.findByState(county.getState())).thenReturn((List<CountyEntity>) counties1);
 		List<CountyEntity> expected = countyServiceImpl.getByState(county.getState());
-		assertThat(expected).isSameAs(county);
-		verify(countyRepo).findByName(county.getName());
+		assertThat(expected).isSameAs(counties1);
+		verify(countyRepo).findByState(county.getState());
 	}
 
 }
