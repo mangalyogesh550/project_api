@@ -39,12 +39,12 @@ public class CountyController {
 
 	}
 
-	@GetMapping(value = "/details/{name}")
+	@GetMapping(value = "/details/name/{name}")
 	public ResponseEntity<CountyEntity> getCountyByName(@PathVariable("name") String name) {
 		return new ResponseEntity<CountyEntity>(countyService.getByName(name), HttpStatus.FOUND);
 	}
 
-	@GetMapping(value = "/details/{state}")
+	@GetMapping(value = "/details/state/{state}")
 	public ResponseEntity<List<CountyEntity>> getCountyByState(@PathVariable("state") String state) {
 		return new ResponseEntity<List<CountyEntity>>(countyService.getByState(state), HttpStatus.FOUND);
 	}
