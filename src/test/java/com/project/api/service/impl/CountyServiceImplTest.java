@@ -40,17 +40,18 @@ public class CountyServiceImplTest {
 		assertThat(county.getName()).isSameAs(countyEntity.getName());
 		verify(countyRepo).save(countyEntity);
 	}
-	
-//	@Test
-//	void addCountyListTest() {
-//		List<CountyEntity> counties2 = new ArrayList();
-//		CountyEntity countyEntity = new CountyEntity();
-//		countyEntity.setName("Test Name");
-//		when(countyRepo.saveAll().thenReturn(counties2);
-//		List<CountyEntity> counties = countyServiceImpl.addCountyList(counties2);
-//		assertThat(county.getName()).isSameAs(countyEntity.getName());
-//		verify(countyRepo).save(countyEntity);
-//	}
+
+	@Test
+	void addCountyListTest() {
+		List<CountyEntity> counties = new ArrayList();
+		CountyEntity countyEntity = new CountyEntity();
+		countyEntity.setName("Test Name");
+		counties.add(countyEntity);
+		when(countyRepo.saveAll(counties)).thenReturn(counties);
+		List<CountyEntity> counties1 = countyServiceImpl.addCountyList(counties);
+		assertThat(counties.get(0).getName()).isSameAs(counties.get(0).getName());
+		verify(countyRepo).saveAll(counties);
+	}
 
 	// method1
 	@Test
@@ -62,19 +63,19 @@ public class CountyServiceImplTest {
 		assertEquals(expected, counties);
 		verify(countyRepo).findAll();
 	}
-	
-	//method2
-		@Test
-		void getAllCountyTest2() {
-			List<CountyEntity> counties3 = new ArrayList<>();
-			CountyEntity county = new CountyEntity();
-			county.setName("test");
-			counties3.add(county);
-			
-			when(countyRepo.findAll()).thenReturn(counties3);
-			List<CountyEntity> cList = countyServiceImpl.getAllCounty();
-			Assertions.assertEquals("test", cList.get(0).getName());
-		}
+
+	// method2
+	@Test
+	void getAllCountyTest2() {
+		List<CountyEntity> counties3 = new ArrayList<>();
+		CountyEntity county = new CountyEntity();
+		county.setName("test");
+		counties3.add(county);
+
+		when(countyRepo.findAll()).thenReturn(counties3);
+		List<CountyEntity> cList = countyServiceImpl.getAllCounty();
+		Assertions.assertEquals("test", cList.get(0).getName());
+	}
 
 	@Test
 	public void getByNameTest() {

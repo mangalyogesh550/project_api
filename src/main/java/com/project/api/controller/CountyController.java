@@ -19,7 +19,7 @@ import com.project.api.service1.CountyService;
 @RestController
 @RequestMapping(value = "/county")
 public class CountyController {
-	
+
 	@Autowired
 	CountyService countyService;
 
@@ -27,7 +27,7 @@ public class CountyController {
 	public ResponseEntity<CountyEntity> add(@RequestBody CountyEntity countyEntity) throws IOException {
 		return new ResponseEntity<CountyEntity>(countyService.addCounty(countyEntity), HttpStatus.CREATED);
 	}
-	
+
 	@PostMapping(value = "/details")
 	public ResponseEntity<List<CountyEntity>> add(@RequestBody List<CountyEntity> countyEntity) throws IOException {
 		return new ResponseEntity<List<CountyEntity>>(countyService.addCountyList(countyEntity), HttpStatus.CREATED);
