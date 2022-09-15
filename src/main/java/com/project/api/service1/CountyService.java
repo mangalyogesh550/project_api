@@ -9,6 +9,8 @@ import com.project.api.entity.CountyEntity;
 @Service
 public interface CountyService {
 	public CountyEntity addCounty(CountyEntity countyEntity);
+	
+	public List<CountyEntity> addCountyList(List<CountyEntity> countyEntity);
 
 	public List<CountyEntity> getAllCounty();
 

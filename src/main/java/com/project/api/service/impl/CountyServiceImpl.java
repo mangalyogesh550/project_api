@@ -35,4 +35,9 @@ public class CountyServiceImpl implements CountyService {
 		return countyRepo.findByState(state);
 	}
 
+	@Override
+	public List<CountyEntity> addCountyList(List<CountyEntity> countyEntity) {
+		return countyRepo.saveAll(countyEntity);
+	}
+
 }
